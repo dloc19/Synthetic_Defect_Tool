@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Blend / layers icon -->
+  <g fill="none" stroke="#3fb950" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bottom layer -->
+    <rect x="3" y="13" width="13" height="9" rx="2" fill="#3fb95033"/>
+    <!-- Top layer (offset) -->
+    <rect x="8" y="2" width="13" height="9" rx="2" fill="#3fb95033"/>
+    <!-- Arrow blending -->
+    <path d="M8 13 Q5 10 8 7" stroke="#3fb950" stroke-dasharray="2 1.5"/>
+  </g>
+</svg>

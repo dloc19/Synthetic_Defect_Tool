@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Scissors icon -->
+  <g fill="none" stroke="#58a6ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left blade -->
+    <circle cx="5.5" cy="5.5" r="2.5" stroke="#58a6ff"/>
+    <!-- Right blade -->
+    <circle cx="5.5" cy="18.5" r="2.5" stroke="#58a6ff"/>
+    <!-- Blades crossing -->
+    <path d="M8 7L20 20"/>
+    <path d="M8 17L20 4"/>
+    <!-- Dashed cut line -->
+    <line x1="13" y1="12" x2="20" y2="12" stroke-dasharray="2 2" opacity="0.5"/>
+  </g>
+</svg>
