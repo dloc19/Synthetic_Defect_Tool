@@ -63,8 +63,8 @@ def generate_batch(
             # Sinh chuỗi hex tuỳ ý thông qua uuid để đảm bảo tên độc nhất
             name = f"{prefix}_{i:04d}_{uuid.uuid4().hex[:6]}"
             cv2.imwrite(os.path.join(output_dir, f"{name}.png"), result)
-            if save_mask:
-                # Lưu mặt nạ annotator ra file PNG
-                cv2.imwrite(os.path.join(output_dir, f"{name}_mask.png"), m_aug)
+            # if save_mask:
+            #     # Lưu mặt nạ annotator ra file PNG
+            #     cv2.imwrite(os.path.join(output_dir, f"{name}_mask.png"), m_aug)
 
         yield i, result

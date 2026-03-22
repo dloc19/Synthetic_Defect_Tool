@@ -70,7 +70,7 @@ class _BatchWorker(QThread):
         self._mode   = blend_mode
         self._aug    = aug_config
         self._outdir = output_dir
-        self._save_mask = save_mask
+        # self._save_mask = save_mask
         self._prefix = prefix
 
     def run(self):
@@ -82,7 +82,7 @@ class _BatchWorker(QThread):
                 blend_mode=self._mode,
                 aug_config=self._aug if self._aug else None,
                 output_dir=self._outdir,
-                save_mask=self._save_mask,
+                #save_mask=self._save_mask,
                 prefix=self._prefix,
             ):
                 saved = idx
@@ -718,7 +718,7 @@ class BlendWindow(QMainWindow):
             blend_mode=self._current_blend_mode(),
             aug_config=self._build_aug_config(),
             output_dir=self._batch_folder,
-            save_mask=self._batch_save_mask.isChecked(),
+            #save_mask=self._batch_save_mask.isChecked(),
             prefix="synth",
         )
         self._batch_worker.progress.connect(self._on_batch_progress)
