@@ -21,3 +21,10 @@ Synthetic_data_tool_source_code.pdf
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Datasets and Images
+dataset/
+output/
+blended_result.png
+augmented_result.png
+*.log

@@ -17,7 +17,7 @@ BLEND_MODES = {
     "Poisson Clone (Standard)":    NORMAL_CLONE,
     "Poisson Clone (Mixed)":       MIXED_CLONE,
     "Poisson (Color Matched)":     COLOR_MATCH_CLONE,
-    "Pyramid Seamless Blend":      PYRAMID_BLEND,
+    "Pyramid Seamless Blend(Seamless)":      PYRAMID_BLEND,
     "Alpha Blend (Soft Edge)":     ALPHA_BLEND_FEATHER,
     "Monochrome Transfer":         MONO_CLONE,
 }

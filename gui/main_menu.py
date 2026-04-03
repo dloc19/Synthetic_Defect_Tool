@@ -16,6 +16,7 @@ from gui.theme import (
 from gui import icons
 from gui.cut_mask_window import CutMaskWindow
 from gui.blend_window import BlendWindow
+from gui.augmentation_window import AugmentationWindow
 
 
 class _FeatureButton(QPushButton):
@@ -86,7 +87,7 @@ class MainMenu(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Synthetic Defect Tool")
-        self.setFixedSize(440, 560)
+        self.setFixedSize(440, 660)
         self.setStyleSheet(f"background-color: {BG_DEEP};")
         self.setWindowIcon(icons.APP())
 
@@ -209,6 +210,18 @@ class MainMenu(QMainWindow):
         self.btn_blend.setToolTip("Open the defect blending tool")
         body_layout.addWidget(self.btn_blend)
 
+        body_layout.addSpacing(12)
+
+        self.btn_augment = _FeatureButton(
+            icon="🔄",
+            title="Augmentation",
+            subtitle="Các phương pháp tăng cường dữ liệu ảnh cơ bản",
+            color="#8957e5",
+            color_dark="#a371f7",
+        )
+        self.btn_augment.setToolTip("Open the full image augmentation tool")
+        body_layout.addWidget(self.btn_augment)
+
         body_layout.addStretch()
 
         # ── Footer ────────────────────────────────
@@ -240,6 +253,7 @@ class MainMenu(QMainWindow):
         # ── Connections ───────────────────────────
         self.btn_cut.clicked.connect(self._open_cut)
         self.btn_blend.clicked.connect(self._open_blend)
+        self.btn_augment.clicked.connect(self._open_augment)
 
     # ─── Slots ────────────────────────────────────
     def _open_cut(self):
@@ -249,3 +263,7 @@ class MainMenu(QMainWindow):
     def _open_blend(self):
         self.blend_win = BlendWindow()
         self.blend_win.show()
+
+    def _open_augment(self):
+        self.augment_win = AugmentationWindow()
+        self.augment_win.show()
