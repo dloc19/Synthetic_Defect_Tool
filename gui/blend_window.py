@@ -63,15 +63,15 @@ class _BatchWorker(QThread):
     error    = pyqtSignal(str)
 
     def __init__(self, ok_img, patch, mask, count,
-                 blend_mode, aug_config, output_dir, save_mask, prefix):
+                 blend_mode, aug_config, output_dir, prefix, position=None):
         super().__init__()
         self._ok, self._patch, self._mask = ok_img, patch, mask
         self._count  = count
         self._mode   = blend_mode
         self._aug    = aug_config
         self._outdir = output_dir
-        # self._save_mask = save_mask
         self._prefix = prefix
+        self._position = position
 
     def run(self):
         try:
@@ -82,8 +82,8 @@ class _BatchWorker(QThread):
                 blend_mode=self._mode,
                 aug_config=self._aug if self._aug else None,
                 output_dir=self._outdir,
-                #save_mask=self._save_mask,
                 prefix=self._prefix,
+                position=self._position,
             ):
                 saved = idx
                 self.progress.emit(idx, self._count)
@@ -712,14 +712,18 @@ class BlendWindow(QMainWindow):
         self._batch_progress.show()
         self._ph_status.setText(f"Batch: 0 / {count}")
 
+        position = None
+        if self._radio_manual.isChecked() and self._canvas.patch_pos:
+            position = (int(self._canvas.patch_pos.x()), int(self._canvas.patch_pos.y()))
+
         self._batch_worker = _BatchWorker(
             self._ok, self._patch, self._mask,
             count=count,
             blend_mode=self._current_blend_mode(),
             aug_config=self._build_aug_config(),
             output_dir=self._batch_folder,
-            #save_mask=self._batch_save_mask.isChecked(),
             prefix="synth",
+            position=position,
         )
         self._batch_worker.progress.connect(self._on_batch_progress)
         self._batch_worker.finished.connect(self._on_batch_done)

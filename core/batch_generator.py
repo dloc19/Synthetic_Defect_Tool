@@ -19,6 +19,7 @@ def generate_batch(
         output_dir: str | None            = None,
         save_mask:  bool                  = False,
         prefix:     str                   = "synth",
+        position:   tuple[int, int] | None = None,
 ) -> Generator[tuple[int, np.ndarray], None, None]:
     """
     Tạo ra một loạt (batch) gồm `count` ảnh tổng hợp (synthetic), trả về luồng trạng thái
@@ -56,7 +57,7 @@ def generate_batch(
             p_aug, m_aug = patch.copy(), mask.copy()
 
         # 2. Hoà trộn (Blend defect)
-        result = blend_defect(ok_img, p_aug, m_aug, blend_mode=blend_mode)
+        result = blend_defect(ok_img, p_aug, m_aug, blend_mode=blend_mode, position=position)
 
         # 3. Lưu trữ nếu có chỉ định thư mục (Save logic)
         if output_dir:
